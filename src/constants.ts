@@ -1,0 +1,1 @@
+export const AGENT_URL = "https://studio.d-id.com/agents/share?id=v2_agt_m6uAgS6e&utm_source=copy&key=WVhWMGFEQjhOamszWmpOaE5XWm1PRFV5TmpNelpUUTVZMlF6TkRrNE9rTnZhRFJaWDJadWFIWlZiMWQyTkZWM1IyOW1idz09";

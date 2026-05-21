@@ -1,0 +1,32 @@
+{
+  "entities": {
+    "ChatMessage": {
+      "title": "Chat Message",
+      "description": "A message sent by a user or the AI avatar.",
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "Content of the message"
+        },
+        "sender": {
+          "type": "string",
+          "enum": ["user", "ai"],
+          "description": "Who sent the message"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server-side timestamp"
+        }
+      },
+      "required": ["text", "sender", "timestamp"]
+    }
+  },
+  "firestore": {
+    "public_chats/{sessionId}/messages/{messageId}": {
+      "schema": "ChatMessage",
+      "description": "Public chat messages for the sales companion."
+    }
+  }
+}

@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", serif;
+  
+  --color-theme-bg: #080808;
+  --color-theme-ink: #E0D8D0;
+  --color-theme-accent: #C8B8A0;
+  --color-theme-border: #2A2A2A;
+  --color-theme-card: #111111;
+  --color-theme-sub: #6B6B6B;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    font-weight: 400 !important;
+    font-size: 14px;
+    background-color: var(--color-theme-bg);
+    color: var(--color-theme-ink);
+  }
+
+  /* Resetting all headers and strong elements to normal weight as requested */
+  h1, h2, h3, h4, h5, h6, strong, b, th {
+    font-family: var(--font-sans);
+    font-weight: 400 !important;
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  /* No big sizes as requested. Using uniform normal sizing logic */
+  .text-normal { font-size: 1rem; font-weight: 400 !important; }
+  .text-small { font-size: 0.875rem; font-weight: 400 !important; }
+  .text-tiny { font-size: 0.75rem; font-weight: 400 !important; }
+  
+  /* Ensuring everything is normal weight */
+  * {
+    font-weight: 400 !important;
+  }
+}
+
+@layer utilities {
+  /* Ensuring normal weights globally as requested */
+  .font-normal-force { font-weight: 400 !important; }
+  .no-watermark-container {
+    mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
+  }
+
+  .glass-sophisticated {
+    background: rgba(17, 17, 17, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--color-theme-border);
+  }
+
+  .text-tracking-wide {
+    letter-spacing: 0.2em;
+  }
+
+  .text-tracking-widest {
+    letter-spacing: 0.3em;
+  }
+}
+

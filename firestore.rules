@@ -1,0 +1,49 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // Chat Message Validation
+    function isValidChatMessage(data) {
+      return data.keys().hasAll(['text', 'sender', 'timestamp']) &&
+             data.keys().size() == 3 &&
+             data.text is string && data.text.size() <= 5000 &&
+             data.sender in ['user', 'ai'] &&
+             data.timestamp == request.time;
+    }
+
+    // Match path for chat history
+    match /users/{userId}/chats/{messageId} {
+      allow list, get: if isOwner(userId);
+      
+      allow create: if isOwner(userId) && 
+                      isValidId(userId) && 
+                      isValidChatMessage(request.resource.data);
+      
+      // Updates and deletes are not allowed for chat history in this app (immutable)
+      allow update, delete: if false;
+    }
+
+    // Public chat for unauthenticated mode
+    match /public_chats/{sessionId}/messages/{messageId} {
+      allow list, get: if true;
+      allow create: if isValidChatMessage(request.resource.data);
+    }
+  }
+}

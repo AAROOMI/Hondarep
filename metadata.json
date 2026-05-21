@@ -1,0 +1,11 @@
+{
+  "name": "Remix: HONDA Sales Companion Perfect ",
+  "description": "An AI-powered avatar application with Firebase backend and local fallback support.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "firebase"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "short_name": "FAHAD",
+  "name": "FAHAD Honda Sales Companion",
+  "description": "AI-powered sales companion with real-time Firebase backend and local offline fallback.",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#080808",
+  "background_color": "#080808"
+}
