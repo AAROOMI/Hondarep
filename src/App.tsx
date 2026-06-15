@@ -2,9 +2,7 @@ import { AGENT_URL } from './constants';
 
 export default function App() {
   return (
-    <div className="flex h-screen w-screen bg-theme-bg overflow-hidden font-sans font-normal text-theme-ink relative">
-      
-      {/* Fullscreen Avatar Layer - Pure Avatar Experience */}
+    <div className="w-screen h-screen bg-theme-bg overflow-hidden relative">
       <div className="fixed inset-0 z-0 bg-theme-bg overflow-hidden">
         <div className="relative w-full h-full">
            {/* Agent Iframe - Scaled and positioned to crop bottom branding */}
@@ -13,15 +11,11 @@ export default function App() {
               src={AGENT_URL}
               className="w-full h-full border-none pointer-events-auto"
               allow="camera; microphone; clipboard-write; display-capture"
-              title="FAHAD Agent"
+              title="Agent"
             />
           </div>
-          
-          {/* Subtle vignette for depth */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10 z-10 pointer-events-none"></div>
         </div>
       </div>
-
     </div>
   );
 }
